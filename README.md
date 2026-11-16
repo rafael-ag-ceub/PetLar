@@ -297,4 +297,5 @@ Além do código, este repositório guarda os materiais do Trabalho A3:
 | `slides/Slides_PetLar_Completo.pdf` | Os 15 slides na ordem da apresentação. |
 | `slides/Slides_Rafael_1a7_e_15.pdf` | Slides do Rafael (1 a 7) e encerramento. |
 | `slides/Slides_Ana_8a14_e_15.pdf` | Slides da Ana (8 a 14) e encerramento. |
+| `slides/Slides_PetLar_Editavel.pptx` | Os 15 slides em PowerPoint editável (importa no Canva ou no Google Slides). |
 | `slides/imagens/` | Cada slide em PNG, com número, tema e apresentador no nome. |
