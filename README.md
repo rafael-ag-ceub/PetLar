@@ -1,53 +1,60 @@
-# Pet Lar – Sistema de Gestão de Adoção de Animais
+<div align="center">
 
-Sistema web em **PHP + MySQL + Bootstrap** para ONGs e abrigos de animais controlarem
-espécies, animais, adotantes, voluntários, adoções e vacinação.
+<img src="docs/img/capa.png" alt="Pet Lar" width="100%" />
 
-> Trabalho A3 · Desenvolvimento Web com PHP · UniCEUB · Prof. Francisco Molina · 2026
-> Integrantes: **Rafael Augusto Santana Gil** e **Ana Cecília Batista**
+# 🏠 Pet Lar
+
+**Sistema web de gestão de adoção de animais para ONGs e abrigos**
+
+![PHP](https://img.shields.io/badge/PHP-7.4%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![FPDF](https://img.shields.io/badge/FPDF-1.86-DA603B?style=for-the-badge)
+![Testes](https://img.shields.io/badge/testes-24%2F24-2E7D32?style=for-the-badge)
+
+Trabalho A3 · Desenvolvimento Web com PHP · **UniCEUB** · Prof. Francisco Molina · 2026
+
+**Rafael Augusto Santana Gil** · **Ana Cecília Batista**
+
+[Como rodar](#-como-rodar) ·
+[Telas](#-telas) ·
+[Estrutura](#-estrutura-de-pastas) ·
+[Banco de dados](#-banco-de-dados) ·
+[Regras de negócio](#-regras-de-negócio) ·
+[Documentação](#-documentação-e-apresentação)
+
+</div>
 
 ---
 
-## Sumário
+## 📌 O problema e a solução
 
-1. [O que o sistema faz](#1-o-que-o-sistema-faz)
-2. [Como instalar e rodar](#2-como-instalar-e-rodar)
-3. [Estrutura de pastas](#3-estrutura-de-pastas)
-4. [Arquivos da raiz](#4-arquivos-da-raiz)
-5. [Módulos de cadastro (CRUD)](#5-módulos-de-cadastro-crud)
-6. [Relatório e PDFs](#6-relatório-e-pdfs)
-7. [Banco de dados](#7-banco-de-dados)
-8. [Como uma página é montada](#8-como-uma-página-é-montada)
-9. [Regras de negócio no código](#9-regras-de-negócio-no-código)
-10. [Segurança](#10-segurança)
+Muitas ONGs ainda controlam as adoções em cadernos, planilhas soltas e grupos de mensagem. Os dados ficam espalhados, a próxima dose de vacina passa sem ninguém ver e não sobra histórico de para quem cada animal foi.
 
----
+O **Pet Lar** junta tudo num só lugar: seis tipos de informação ligados entre si (espécie, animal, adotante, voluntário, adoção e vacinação), com login, busca avançada, relatório consolidado e PDFs.
 
-## 1. O que o sistema faz
+## ✨ O que o sistema faz
 
 | Exigência do Trabalho A3 | Onde está |
 |---|---|
-| CRUD completo em PHP | 6 módulos: `especie/`, `animal/`, `adotante/`, `voluntario/`, `adocao/`, `vacinacao/` |
-| 6 tipos de informação relacionados | 6 tabelas ligadas por chave estrangeira (+ tabela `usuario`) |
-| Autenticação com sessão | `login.php`, `verifica_login.php`, `sair.php` |
-| Busca avançada com 3+ filtros | `animal/index.php` (5 filtros: nome, espécie, situação, porte e data de entrada) |
-| Relatório consolidado | `relatorio/index.php` |
-| Listagem em PDF | `pdf/animais.php` e `pdf/relatorio.php` |
-| Script MySQL com carga inicial | `banco.sql` |
-| Interface com Bootstrap | `cabecalho.php` (Bootstrap 5.3 via CDN) + `css/estilo.css` |
+| ✅ CRUD completo em PHP | 6 módulos: `especie/`, `animal/`, `adotante/`, `voluntario/`, `adocao/`, `vacinacao/` |
+| ✅ 6 tipos de informação relacionados | 6 tabelas ligadas por chave estrangeira (+ tabela `usuario`) |
+| ✅ Autenticação com sessão | `login.php`, `verifica_login.php`, `sair.php` |
+| ✅ Busca avançada com 3+ filtros | `animal/index.php` (5 filtros: nome, espécie, situação, porte e data de entrada) |
+| ✅ Relatório consolidado | `relatorio/index.php` |
+| ✅ Listagem em PDF | `pdf/animais.php` e `pdf/relatorio.php` |
+| ✅ Script MySQL com carga inicial | `banco.sql` |
+| ✅ Interface com Bootstrap | `cabecalho.php` (Bootstrap 5.3 via CDN) + `css/estilo.css` |
 
----
-
-## 2. Como instalar e rodar
+## 🚀 Como rodar
 
 1. Instale o **XAMPP** (ou outro pacote com Apache, PHP 7.4+ e MySQL) e inicie **Apache** e **MySQL**.
-2. Copie a pasta `petlar` para `C:\xampp\htdocs\`.
-3. Abra o **MySQL Workbench** (ou phpMyAdmin), abra o arquivo `petlar/banco.sql` e execute tudo.
-   O banco `petlar` é criado do zero, já com dados de exemplo.
-4. Em `conexao.php`, ajuste `$user` e `$pass` com o usuário e a senha do seu MySQL
-   (no XAMPP padrão: usuário `root` e senha vazia `''`).
-5. Acesse **http://localhost/petlar/** no navegador.
-6. Entre com um dos usuários abaixo (senha de todos: `123456`):
+2. Copie esta pasta para `C:\xampp\htdocs\petlar`.
+3. No **MySQL Workbench** (ou phpMyAdmin), abra o `banco.sql` e execute tudo. O banco `petlar` é criado do zero, já com dados de exemplo.
+4. Em `conexao.php`, ajuste `$user` e `$pass` com o usuário e a senha do seu MySQL (no XAMPP padrão: `root` e senha vazia).
+5. Acesse **http://localhost/petlar/**.
+
+**Usuários de teste** (senha de todos: `123456`):
 
 | Usuário | Nome |
 |---|---|
@@ -55,119 +62,86 @@ espécies, animais, adotantes, voluntários, adoções e vacinação.
 | `ana.cecilia` | Ana Cecília Batista |
 | `admin` | Administrador |
 
-> O Bootstrap e os ícones vêm da internet (CDN). Sem conexão o sistema funciona, mas sem o visual.
-> Os PDFs funcionam sem internet.
+> [!NOTE]
+> O Bootstrap e os ícones vêm da internet (CDN). Sem conexão o sistema funciona, mas sem o visual. Os PDFs funcionam sem internet.
 
----
+## 🖼️ Telas
 
-## 3. Estrutura de pastas
+<table>
+<tr>
+<td width="78%"><img src="docs/img/painel.png" alt="Painel" /><br/><sub><b>Painel</b>: números do abrigo, atalhos e últimas adoções</sub></td>
+<td width="22%"><img src="docs/img/celular.png" alt="Celular" /><br/><sub><b>Celular</b>: o menu vira “hambúrguer”</sub></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="50%"><img src="docs/img/busca.png" alt="Busca avançada" /><br/><sub><b>Busca avançada</b> com 5 filtros e PDF da listagem</sub></td>
+<td width="50%"><img src="docs/img/relatorio.png" alt="Relatório" /><br/><sub><b>Relatório consolidado</b> com COUNT, SUM(CASE) e GROUP BY</sub></td>
+</tr>
+</table>
+
+<details>
+<summary><b>Protótipo de média fidelidade</b></summary>
+<br/>
+<img src="docs/img/prototipo.png" alt="Protótipo" />
+</details>
+
+## 📁 Estrutura de pastas
 
 ```
-petlar/
-│
-├── README.md              este arquivo
+PetLar/
 ├── banco.sql              script do banco (MySQL) com a carga inicial
-│
 ├── conexao.php            conexão com o banco (PDO) → variável $pdo
-├── index.php              TELA de login
+├── index.php              tela de login
 ├── login.php              processa o login e cria a sessão
 ├── verifica_login.php     protege as páginas internas (sessão + tempo limite)
 ├── sair.php               logout (destrói a sessão)
 ├── cabecalho.php          topo das páginas: <head>, Bootstrap, menu, alertas
 ├── rodape.php             fim das páginas: rodapé e JavaScript do Bootstrap
 ├── painel.php             página inicial depois do login
+├── css/estilo.css         cores e ajustes visuais
 │
-├── css/
-│   └── estilo.css         cores e ajustes visuais do Pet Lar
+├── especie/               CRUD de espécies          ┐
+├── animal/                CRUD + busca avançada     │  cada um com
+├── adotante/              CRUD de adotantes         │  index.php   (lista + formulário)
+├── voluntario/            CRUD de voluntários       │  inserir.php (INSERT ou UPDATE)
+├── adocao/                CRUD de adoções           │  excluir.php (DELETE)
+├── vacinacao/             CRUD de vacinas           ┘
 │
-├── especie/               CRUD de espécies
-│   ├── index.php          tela: formulário + listagem
-│   ├── inserir.php        salva (INSERT ou UPDATE)
-│   └── excluir.php        apaga (DELETE)
+├── relatorio/index.php    relatório consolidado
+├── pdf/                   modelo_pdf.php, animais.php e relatorio.php
+├── lib/fpdf/              biblioteca FPDF 1.86
 │
-├── animal/                CRUD de animais + BUSCA AVANÇADA
-│   ├── index.php
-│   ├── inserir.php
-│   └── excluir.php
-│
-├── adotante/              CRUD de adotantes
-│   ├── index.php
-│   ├── inserir.php
-│   └── excluir.php
-│
-├── voluntario/            CRUD de voluntários
-│   ├── index.php
-│   ├── inserir.php
-│   └── excluir.php
-│
-├── adocao/                CRUD de adoções (liga animal + adotante + voluntário)
-│   ├── index.php
-│   ├── inserir.php
-│   └── excluir.php
-│
-├── vacinacao/             CRUD de vacinas aplicadas
-│   ├── index.php
-│   ├── inserir.php
-│   └── excluir.php
-│
-├── relatorio/
-│   └── index.php          relatório consolidado (COUNT, SUM, GROUP BY)
-│
-├── pdf/
-│   ├── modelo_pdf.php     classe PdfPetLar: cabeçalho e rodapé dos PDFs
-│   ├── animais.php        listagem de animais em PDF (usa os filtros da busca)
-│   └── relatorio.php      relatório consolidado em PDF
-│
-└── lib/
-    └── fpdf/              biblioteca FPDF 1.86 (gera PDF com PHP puro)
-        ├── fpdf.php
-        └── font/          definições das fontes Helvetica
+├── docs/                  documentação, guia do código, roteiro e imagens
+└── slides/                apresentação em PDF, PowerPoint e PNG
 ```
 
-Fora o CSS, o script SQL e este README, todos os arquivos são `.php`.
+### Como uma página é montada
 
----
+Toda página interna segue a mesma ordem:
 
-## 4. Arquivos da raiz
+```php
+<?php
+    $raiz = '../';
+    include '../verifica_login.php';   // 1. só entra quem está logado
+    include '../conexao.php';          // 2. abre o banco ($pdo)
+    // 3. consultas: listagem e "selecionar para edição"
+    $titulo = 'Animais';
+    $menu   = 'animal';
+    include '../cabecalho.php';        // 4. <head>, menu e alertas
+?>
+    <!-- 5. HTML da tela: formulário + tabela -->
+<?php include '../rodape.php'; ?>      <!-- 6. rodapé e JavaScript -->
+```
 
-| Arquivo | Função | Usado por |
-|---|---|---|
-| `conexao.php` | Define host, banco, usuário e senha, cria o objeto `$pdo` e acerta o fuso horário de Brasília. | Todos os arquivos que acessam o banco (`include`) |
-| `index.php` | Tela de login com Bootstrap. Mostra avisos de senha errada, acesso negado ou sessão expirada (`?erro=`). Se já houver sessão, vai direto para o painel. | Primeira página do sistema |
-| `login.php` | Recebe usuário e senha por **POST**, converte a senha em `md5`, busca no banco e, se achar, grava `$_SESSION['usuario']`, `['nome']` e `['ultimo_acesso']`. | Formulário do `index.php` |
-| `verifica_login.php` | Incluído no topo de **toda** página interna. Sem sessão → volta ao login. Parado mais de 30 minutos → encerra a sessão. | Todas as páginas internas |
-| `sair.php` | `session_unset()` + `session_destroy()` e volta ao login. | Botão **Sair** do menu |
-| `cabecalho.php` | Abre o HTML, carrega Bootstrap, ícones e `estilo.css`, monta o menu superior, mostra o nome do usuário e os alertas (`?msg=` e `?tipo=`). Também define as funções `ativo()`, `classeStatus()`, `dataBR()` e `selecionado()`. | Todas as telas internas |
-| `rodape.php` | Fecha o `<main>`, mostra o rodapé e carrega o JavaScript do Bootstrap. | Todas as telas internas |
-| `painel.php` | Cartões com números (COUNT), atalhos para os módulos e as 5 últimas adoções. | Destino depois do login |
-
----
-
-## 5. Módulos de cadastro (CRUD)
-
-Todos os módulos seguem **o mesmo padrão visto em aula** (exemplo `aluno/`):
+### O padrão CRUD
 
 | Arquivo | Operação | O que faz |
 |---|---|---|
-| `index.php` | **READ** | Lista os registros com `SELECT` e mostra o formulário. Quando abre com `?id=X` (link **Editar**), busca esse registro e preenche o formulário. |
-| `inserir.php` | **CREATE / UPDATE** | Recebe o formulário (GET), confere as regras de negócio e grava. **`id` vazio → `INSERT`**, **`id` preenchido → `UPDATE`**. |
-| `excluir.php` | **DELETE** | Confere se o registro pode ser apagado (vínculos) e executa o `DELETE`. |
-
-Depois de salvar ou excluir, o arquivo volta para a listagem com
-`header("Location: index.php?msg=...")`, e o `cabecalho.php` mostra a mensagem.
-
-### O que cada módulo tem de especial
-
-| Pasta | Tabela | Destaques |
-|---|---|---|
-| `especie/` | `especie` | Mostra quantos animais há de cada espécie; não aceita nome repetido; não exclui espécie com animais. |
-| `animal/` | `animal` | **Busca avançada** com 5 filtros e botão **Gerar PDF**; situação "Adotado" só muda pelo módulo de adoções; exclusão bloqueada se houver adoção. |
-| `adotante/` | `adotante` | CPF único no formato `000.000.000-00`; exige 18 anos ou mais; mostra quantas adoções cada pessoa fez. |
-| `voluntario/` | `voluntario` | Função escolhida em lista; mostra quantas adoções acompanhou; exclusão bloqueada se tiver adoções. |
-| `adocao/` | `adocao` | Três `<select>` (animal, adotante, voluntário); só lista animais disponíveis; ao salvar o animal vira "Adotado"; ao excluir volta a "Disponível". |
-| `vacinacao/` | `vacinacao` | Filtro por animal; próxima dose opcional; etiquetas "Em breve" (30 dias) e "Atrasada". |
-
-### Padrão de uma consulta (igual em todos os arquivos)
+| `index.php` | **READ** | Lista com `SELECT` e mostra o formulário. Com `?id=X` (link **Editar**), carrega o registro no formulário. |
+| `inserir.php` | **CREATE / UPDATE** | Confere as regras e grava: `id` vazio faz `INSERT`, `id` preenchido faz `UPDATE`. |
+| `excluir.php` | **DELETE** | Confere os vínculos e executa o `DELETE`. |
 
 ```php
 $sql = "UPDATE especie SET nome =:nome WHERE id =:id";   // 1. SQL com parâmetros
@@ -179,74 +153,31 @@ header("Location: index.php?msg=" . urlencode("Salvo!")); // 5. volta para a lis
 exit;
 ```
 
----
+## 🗄️ Banco de dados
 
-## 6. Relatório e PDFs
+<img src="docs/img/mer.png" alt="MER" width="55%" align="right" />
 
-| Arquivo | O que gera |
+Banco **`petlar`**, criado pelo `banco.sql`. Pode ser executado várias vezes: ele apaga e recria tudo.
+
+| Tabela | Guarda |
 |---|---|
-| `relatorio/index.php` | Filtro de período; totais por situação e taxa de adoção; tabela por espécie (`SUM(CASE WHEN ...)` + `GROUP BY`); adoções por mês (`YEAR()`, `MONTH()`); ranking de voluntários; vacinas a vencer em 30 dias. |
-| `pdf/modelo_pdf.php` | Classe `PdfPetLar` (filha de `FPDF`) com `Header()`, `Footer()` e `cabecalhoTabela()`. A função `txt()` converte UTF-8 para os acentos aparecerem no PDF. |
-| `pdf/animais.php` | PDF em paisagem com a listagem de animais, aplicando **os mesmos filtros** da busca avançada. |
-| `pdf/relatorio.php` | PDF em retrato com os números do abrigo, a tabela por espécie e as adoções do período. |
-| `lib/fpdf/` | Biblioteca **FPDF 1.86** (licença livre), em PHP puro, sem instalar nada no servidor. |
+| `usuario` | Login (senha em md5) |
+| `especie` | Cão, Gato, Coelho, Ave, Roedor |
+| `animal` | Animais e sua situação |
+| `adotante` | Quem adota (CPF único) |
+| `voluntario` | Equipe da ONG |
+| `adocao` | Liga animal, adotante e voluntário |
+| `vacinacao` | Vacinas aplicadas |
 
----
-
-## 7. Banco de dados
-
-Banco **`petlar`**, criado pelo `banco.sql` (pode ser executado várias vezes: ele apaga e recria tudo).
-
-| Tabela | Guarda | Chaves estrangeiras |
-|---|---|---|
-| `usuario` | Login do sistema (senha em md5) | – |
-| `especie` | Cão, Gato, Coelho, Ave, Roedor | – |
-| `animal` | Animais do abrigo e sua situação | `especie_id` → `especie` (RESTRICT) |
-| `adotante` | Pessoas que adotam (CPF único) | – |
-| `voluntario` | Equipe da ONG | – |
-| `adocao` | Adoções realizadas | `animal_id`, `adotante_id`, `voluntario_id` (RESTRICT) |
-| `vacinacao` | Vacinas aplicadas | `animal_id` → `animal` (CASCADE) |
+- **RESTRICT** impede apagar espécie que tem animais.
+- **CASCADE** apaga as vacinas junto com o animal.
+- **UNIQUE** no CPF, no login e no nome da espécie.
 
 Carga inicial: 3 usuários, 5 espécies, 15 animais, 7 adotantes, 5 voluntários, 6 adoções e 13 vacinas.
 
----
+<br clear="right"/>
 
-## 8. Como uma página é montada
-
-Toda página interna segue esta ordem:
-
-```php
-<?php
-    $raiz = '../';                     // caminho até a pasta principal
-    include '../verifica_login.php';   // 1. só entra quem está logado
-    include '../conexao.php';          // 2. abre o banco ($pdo)
-
-    // 3. consultas: listagem e "selecionar para edição"
-
-    $titulo = 'Animais';               // texto da aba
-    $menu   = 'animal';                // item do menu destacado
-    include '../cabecalho.php';        // 4. <head>, menu e alertas
-?>
-    <!-- 5. HTML da tela: formulário + tabela -->
-<?php include '../rodape.php'; ?>      <!-- 6. rodapé e JavaScript -->
-```
-
-Fluxo de navegação:
-
-```
-index.php (login) ──POST──► login.php ──► painel.php
-                                             │
-         ┌───────────┬───────────┬───────────┼───────────┬───────────┬───────────┐
-     animal/     especie/    adotante/  voluntario/   adocao/   vacinacao/  relatorio/
-         │                                                                      │
-   pdf/animais.php                                                     pdf/relatorio.php
-
-Em qualquer página:  Sair ──► sair.php ──► index.php
-```
-
----
-
-## 9. Regras de negócio no código
+## 📏 Regras de negócio
 
 | Regra | Arquivo |
 |---|---|
@@ -263,9 +194,7 @@ Em qualquer página:  Sair ──► sair.php ──► index.php
 | RN11 – Datas não podem estar no futuro; adoção não antes da entrada | `inserir.php` de animal, adoção e vacinação |
 | RN12 – Próxima dose depois da aplicação | `vacinacao/inserir.php` |
 
----
-
-## 10. Segurança
+## 🔒 Segurança
 
 | Proteção | Como |
 |---|---|
@@ -277,25 +206,29 @@ Em qualquer página:  Sair ──► sair.php ──► index.php
 | XSS | Todo texto exibido passa por `htmlspecialchars()` |
 | Exclusão por engano | `confirm()` antes de cada Excluir |
 
----
+## 📚 Documentação e apresentação
 
-Documentação completa (requisitos, histórias de usuário, protótipo, MER, dicionário de dados e manual):
-arquivo **Documentacao_PetLar.pdf**.
-
----
-
-## Documentação e apresentação
-
-Além do código, este repositório guarda os materiais do Trabalho A3:
-
-| Pasta / arquivo | Conteúdo |
+| Arquivo | Conteúdo |
 |---|---|
-| `docs/Documentacao_PetLar.pdf` e `.docx` | Documentação completa (requisitos, histórias de usuário, protótipo, MER, dicionário de dados e manual). O `.docx` é a versão editável. |
-| `docs/Guia_do_Codigo_PetLar.pdf` | Guia de estudo com os trechos mais importantes do código explicados. |
-| `docs/Roteiro_Apresentacao_PetLar.pdf` | Roteiro da apresentação, com o texto de cada slide. |
-| `docs/prototipo_media_fidelidade.png` | Protótipo de média fidelidade. |
-| `slides/Slides_PetLar_Completo.pdf` | Os 15 slides na ordem da apresentação. |
-| `slides/Slides_Rafael_1a7_e_15.pdf` | Slides do Rafael (1 a 7) e encerramento. |
-| `slides/Slides_Ana_8a14_e_15.pdf` | Slides da Ana (8 a 14) e encerramento. |
-| `slides/Slides_PetLar_Editavel.pptx` | Os 15 slides em PowerPoint editável (importa no Canva ou no Google Slides). |
-| `slides/imagens/` | Cada slide em PNG, com número, tema e apresentador no nome. |
+| [`docs/Documentacao_PetLar.pdf`](docs/Documentacao_PetLar.pdf) · [`.docx`](docs/Documentacao_PetLar.docx) | Requisitos, histórias de usuário, protótipo, MER, dicionário de dados e manual |
+| [`docs/Guia_do_Codigo_PetLar.pdf`](docs/Guia_do_Codigo_PetLar.pdf) | Os trechos mais importantes do código explicados |
+| [`docs/Roteiro_Apresentacao_PetLar.pdf`](docs/Roteiro_Apresentacao_PetLar.pdf) | Roteiro da apresentação, slide a slide |
+| [`slides/Slides_PetLar_Editavel.pptx`](slides/Slides_PetLar_Editavel.pptx) | Os 15 slides em PowerPoint editável (abre no Canva ou no Google Slides) |
+| [`slides/Slides_PetLar_Completo.pdf`](slides/Slides_PetLar_Completo.pdf) | Os 15 slides em PDF |
+| [`slides/Slides_Rafael_1a7_e_15.pdf`](slides/Slides_Rafael_1a7_e_15.pdf) · [`Slides_Ana_8a14_e_15.pdf`](slides/Slides_Ana_8a14_e_15.pdf) | Slides separados por apresentador |
+| [`slides/imagens/`](slides/imagens) | Cada slide em PNG |
+
+O pacote completo do trabalho (`Trabalho_A3_PetLar_COMPLETO.zip`) está em **[Releases](../../releases)**.
+
+## 🔭 Próximos passos
+
+- Perfis de acesso
+- Fotos dos animais
+- Página pública de adoção
+- `password_hash` no lugar do `md5`
+
+---
+
+<div align="center">
+<sub>Feito por <b>Rafael Augusto Santana Gil</b> e <b>Ana Cecília Batista</b> · UniCEUB 2026</sub>
+</div>
